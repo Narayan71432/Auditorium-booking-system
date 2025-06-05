@@ -1,0 +1,72 @@
+/* src/Login.css */
+.login-container {
+    width: 300px; /* Adjust width as needed */
+    margin: 100px auto; /* Center the container */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.role-selection {
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: space-between; /* Space between items */
+    margin-bottom: 15px; /* Space below the role selection */
+}
+
+.role-button {
+    flex: 1; /* Make buttons take equal space */
+    margin: 0 5px; /* Space between buttons */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.role-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.role-button.active {
+    background-color: #0056b3; /* Active button color */
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745; /* Green color for submit button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838; /* Darker green on hover */
+}

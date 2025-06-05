@@ -1,0 +1,90 @@
+/* Navbar.css */
+
+/* Fix navbar positioning and prevent overlapping with mobile status bars */
+.custom-navbar {
+  z-index: 1000;  /* Ensure navbar stays above other content */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* Add padding to body to prevent content from hiding under navbar AND mobile status bar */
+body {
+  padding-top: 80px;  /* Increased to accommodate navbar + mobile status bar */
+}
+
+/* Fix for Android/iOS status bar overlap */
+@supports (-webkit-touch-callout: none) {
+  /* iOS devices */
+  body {
+    padding-top: 100px; /* More padding for iOS safe area */
+  }
+}
+
+/* Ensure content starts below the navbar and status bar */
+.container, .container-fluid {
+  padding-top: 10px;
+}
+
+/* Make navbar items more readable on mobile */
+.navbar-nav .nav-link {
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+}
+
+/* Custom styling for navbar-brand */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+/* Ensure dropdown menus don't get cut off */
+.navbar-collapse {
+  max-height: calc(100vh - 56px);
+  overflow-y: auto;
+}
+
+/* Better spacing for navbar toggle button */
+.navbar-toggler {
+  margin-right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Media queries for larger screens */
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  
+  body {
+    padding-top: 60px; /* Reset to normal on desktop */
+  }
+}
+
+/* Fix for calendar view button arrangement on mobile */
+@media (max-width: 576px) {
+  .toolbar-views {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .toolbar-views button {
+    min-width: calc(50% - 10px);
+    margin: 3px;
+    font-size: 13px;
+    padding: 5px 8px;
+  }
+  
+  /* Fix for month view calendar cells */
+  .rbc-month-view {
+    height: auto !important;
+    min-height: 500px;
+  }
+  
+  .rbc-calendar {
+    padding-bottom: 60px;
+  }
+}
