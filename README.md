@@ -1,84 +1,152 @@
-<<<<<<< HEAD
-# Auditorium-booking
-This project is a full-featured Booking System built using the MERN stack (MongoDB, Express.js, React.js, and Node.js), available as both a responsive website and a mobile application. The system is designed to streamline the booking process for users and admins across multiple platforms with real-time synchronization and a user-friendly interface.
-=======
-# MERN Login Application
+# Auditorium Booking System
 
-## Prerequisites
-- Node.js (v14 or later)
-- MongoDB Atlas account
+A full-featured auditorium booking system built using the MERN stack (MongoDB, Express.js, React.js, and Node.js). Accessible as both a responsive website and a mobile application, this system streamlines the booking process for users and admins with real-time synchronization and a user-friendly interface.
 
-## Setup Instructions
+---
 
-### 1. Clone the Repository
-```bash
-git clone <your-repo-url>
-cd mern-login-app
-```
+## Table of Contents
 
-### 2. Backend Setup
-1. Navigate to backend directory
-```bash
-cd backend
-```
+- [Features](#features)
+- [Demo](#demo)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+  - [Clone the Repository](#clone-the-repository)
+  - [Backend Setup](#backend-setup)
+  - [Frontend Setup](#frontend-setup)
+  - [Mobile App Setup (Optional)](#mobile-app-setup-optional)
+- [Technologies Used](#technologies-used)
+- [Security Notes](#security-notes)
 
-2. Install dependencies
-```bash
-npm install
-```
-
-3. Create a `.env` file in the backend directory with:
-```
-MONGODB_URI=your_mongodb_atlas_connection_string
-JWT_SECRET=your_jwt_secret_key
-PORT=5000
-```
-
-4. Start the backend server
-```bash
-npm run dev
-```
-
-### 3. Frontend Setup
-1. Navigate to frontend directory
-```bash
-cd ../frontend
-```
-
-2. Install dependencies
-```bash
-npm install
-```
-
-3. Start the React development server
-```bash
-npm start
-```
+---
 
 ## Features
-- User and Admin login
-- Role-based authentication
+
+- User and Admin authentication (role-based)
+- Real-time booking management
+- Responsive design for web and mobile
 - JWT token-based security
-- MongoDB Atlas database integration
+- Integration with MongoDB Atlas
+- Password encryption with Bcrypt
+- Intuitive UI/UX for easy auditorium booking
+- Admin dashboard for managing bookings and users
+
+---
+
+## Demo
+
+<!-- Optionally add screenshots, GIFs, or a live demo link here -->
+<!-- ![App Screenshot](screenshot.png) -->
+
+---
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (v14 or later)
+- [MongoDB Atlas](https://www.mongodb.com/atlas)
+- [npm](https://www.npmjs.com/)
+- [Capacitor](https://capacitorjs.com/) (for mobile app)
+
+---
+
+## Installation
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/Narayan71432/Auditorium-booking-system.git
+cd Auditorium-booking-system
+```
+
+---
+
+### Backend Setup
+
+1. Navigate to the backend directory:
+    ```bash
+    cd backend
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3. Create a `.env` file in the backend directory with the following content:
+    ```
+    MONGODB_URI=your_mongodb_atlas_connection_string
+    JWT_SECRET=your_jwt_secret_key
+    PORT=5000
+    ```
+
+4. Start the backend server:
+    ```bash
+    npm run dev
+    ```
+
+---
+
+### Frontend Setup
+
+1. Navigate to the frontend directory:
+    ```bash
+    cd ../frontend
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3. Start the React development server:
+    ```bash
+    npm start
+    ```
+
+---
+
+### Mobile App Setup (Optional)
+
+1. Build the React app for production:
+    ```bash
+    npm run build
+    ```
+
+2. Sync with Capacitor:
+    ```bash
+    npx cap sync
+    ```
+
+3. Run the app on Android:
+    ```bash
+    npx cap run android
+    ```
+
+---
 
 ## Technologies Used
-- MongoDB
+
+- MongoDB Atlas
 - Express.js
 - React.js
 - Node.js
-- Axios
-- JWT
+- JWT (JSON Web Tokens)
 - Bcrypt
+- Axios
+- Capacitor (for mobile integration)
+- CSS
+
+---
 
 ## Security Notes
-- Always keep your `.env` file secret
-- Use strong, unique passwords
-- Rotate JWT secrets periodically
 
+- Keep your `.env` file confidential and never commit it to version control.
+- Use strong, unique passwords for all accounts.
+- Rotate your JWT secrets periodically.
+- Regularly update dependencies to patch vulnerabilities.
 
+---
 
+**Contributions are welcome!**  
+Feel free to open issues or submit pull requests for new features, bug fixes, or improvements.
 
-npm run build
-npx cap sync
-npx cap run android
->>>>>>> ae23086 (Initial commit with frontend and backend)
+---
