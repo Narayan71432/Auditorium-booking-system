@@ -5,36 +5,44 @@
 
 /* Apply zoom to all app content */
 .App {
-  transform: scale(calc(var(--app-zoom-level) / 100));
+  /* Improved: Use scale with clamp to prevent unreasonable zoom levels */
+  transform: scale(clamp(0.5, calc(var(--app-zoom-level) / 100), 2));
   transform-origin: top center;
-  width: calc(100% * (100 / (var(--app-zoom-level) / 100)));
-  height: auto;
+  /* Improved: Prevent overflow and maintain layout stability */
+  width: 100%;
   min-height: 100vh;
-  transition: transform 0.3s ease;
+  height: auto;
+  transition: transform 0.3s cubic-bezier(0.4, 0.2, 0.2, 1);
+  will-change: transform;
+  overflow-x: auto;
 }
 
 /* Disable transitions during active touch gestures */
 .App.touching {
-  transition: none;
+  transition: none !important;
 }
 
-/* When zoomed in, ensure content is scrollable */
+/* Responsive: Ensure horizontal scrolling when zoomed in on larger screens */
 @media (min-width: 768px) {
-  body {
+  html, body {
     overflow-x: auto;
   }
 }
 
 /* Prevent text selection during zooming */
-.zooming * {
-  user-select: none;
-  -webkit-user-select: none;
+.zooming *,
+.App.zooming * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  cursor: grab;
 }
 
 /* Special touch handling for mobile */
 @media (pointer: coarse) {
   body {
     touch-action: manipulation;
+    /* Improved: Allow vertical scrolling but hide horizontal overflow */
     overflow-x: hidden;
+    overflow-y: auto;
   }
 }
