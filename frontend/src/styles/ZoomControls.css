@@ -4,31 +4,45 @@
   right: 20px;
   display: flex;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 8px;
-  border-radius: 25px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  backdrop-filter: blur(4px);
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 10px 12px;
+  border-radius: 32px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  z-index: 1100;
+  backdrop-filter: blur(6px);
+  gap: 2px;
+  /* Improved focus accessibility */
+  outline: none;
+}
+
+.global-zoom-controls:focus-within {
+  box-shadow: 0 2px 16px rgba(33, 150, 243, 0.3);
 }
 
 .global-zoom-controls .zoom-btn {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   border: none;
-  background-color: #f0f0f0;
+  background-color: #f5f5f5;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin: 0 4px;
-  transition: all 0.2s ease;
+  margin: 0 3px;
+  font-size: 1.2rem;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  outline: none;
+}
+
+.global-zoom-controls .zoom-btn:focus {
+  box-shadow: 0 0 0 2px #90caf9;
 }
 
 .global-zoom-controls .zoom-btn:hover {
   background-color: #e0e0e0;
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .global-zoom-controls .zoom-btn:active {
@@ -36,33 +50,130 @@
 }
 
 .global-zoom-controls .zoom-level {
-  margin: 0 8px;
-  font-size: 14px;
+  margin: 0 10px;
+  font-size: 16px;
   font-weight: bold;
-  color: #333;
-  min-width: 48px;
+  color: #222;
+  min-width: 50px;
   text-align: center;
+  letter-spacing: 0.01em;
 }
 
 .global-zoom-controls .reset-btn {
   background-color: #e3f2fd;
+  color: #1565c0;
 }
 
-/* Mobile-friendly adjustments */
+.global-zoom-controls .reset-btn:hover,
+.global-zoom-controls .reset-btn:focus {
+  background-color: #bbdefb;
+}
+
 @media (max-width: 768px) {
   .global-zoom-controls {
-    bottom: 15px;
-    right: 15px;
-    padding: 6px;
+    bottom: 12px;
+    right: 12px;
+    padding: 6px 7px;
+    border-radius: 24px;
   }
-  
   .global-zoom-controls .zoom-btn {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+    margin: 0 2px;
   }
-  
   .global-zoom-controls .zoom-level {
-    font-size: 12px;
-    min-width: 40px;
+    font-size: 13px;
+    min-width: 36px;
+    margin: 0 5px;
+  }
+}.global-zoom-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 10px 12px;
+  border-radius: 32px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  z-index: 1100;
+  backdrop-filter: blur(6px);
+  gap: 2px;
+  /* Improved focus accessibility */
+  outline: none;
+}
+
+.global-zoom-controls:focus-within {
+  box-shadow: 0 2px 16px rgba(33, 150, 243, 0.3);
+}
+
+.global-zoom-controls .zoom-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 3px;
+  font-size: 1.2rem;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  outline: none;
+}
+
+.global-zoom-controls .zoom-btn:focus {
+  box-shadow: 0 0 0 2px #90caf9;
+}
+
+.global-zoom-controls .zoom-btn:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.08);
+}
+
+.global-zoom-controls .zoom-btn:active {
+  transform: scale(0.95);
+}
+
+.global-zoom-controls .zoom-level {
+  margin: 0 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+  min-width: 50px;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.global-zoom-controls .reset-btn {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.global-zoom-controls .reset-btn:hover,
+.global-zoom-controls .reset-btn:focus {
+  background-color: #bbdefb;
+}
+
+@media (max-width: 768px) {
+  .global-zoom-controls {
+    bottom: 12px;
+    right: 12px;
+    padding: 6px 7px;
+    border-radius: 24px;
+  }
+  .global-zoom-controls .zoom-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+    margin: 0 2px;
+  }
+  .global-zoom-controls .zoom-level {
+    font-size: 13px;
+    min-width: 36px;
+    margin: 0 5px;
   }
 }
