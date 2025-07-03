@@ -1,0 +1,81 @@
+.custom-toolbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.toolbar-navigation,
+.toolbar-views {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.toolbar-navigation button,
+.toolbar-views button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+  min-width: 60px;
+  margin: 2px;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.toolbar-navigation button:hover,
+.toolbar-views button:hover {
+  background-color: #0056b3;
+}
+
+.toolbar-views button.active {
+  background-color: #0056b3;
+  font-weight: bold;
+}
+
+.toolbar-label {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 5px 0;
+  text-align: center;
+}
+
+/* Add responsive adjustments for mobile */
+@media (min-width: 768px) {
+  .custom-toolbar {
+    flex-direction: row;
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .toolbar-navigation,
+  .toolbar-views {
+    gap: 10px;
+    width: auto;
+    margin-top: 0;
+  }
+
+  .toolbar-navigation button,
+  .toolbar-views button {
+    padding: 8px 15px;
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  .toolbar-label {
+    font-size: 1.5em;
+    margin: 0 20px;
+  }
+}

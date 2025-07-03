@@ -1,0 +1,277 @@
+/* Reset and base styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Page layout */
+.booking-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 56px; /* Navbar height */
+  background-color: #f5f5f5;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Calendar container */
+.booking-calendar-container {
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Calendar Container */
+.calendar-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+/* Calendar Wrapper */
+.calendar-wrapper {
+  width: 100%;
+  max-width: 100%;
+  height: calc(100vh - 76px); /* Full height minus navbar (56px) and some padding */
+  min-height: 500px; /* Minimum height */
+  margin: 0;
+  padding: 10px 16px; /* Add some padding */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* React Big Calendar core styles */
+.rbc-calendar {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure calendar takes full width */
+.rbc-calendar-full-width {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Fix for calendar header */
+.rbc-header {
+  padding: 10px 3px !important;
+}
+
+/* Calendar toolbar */
+.rbc-toolbar {
+  margin: 0 !important;
+  padding: 15px 0 !important;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Navigation buttons (Previous, Today, Next) */
+.rbc-toolbar .rbc-btn-group:first-child {
+  display: flex;
+  gap: 8px;
+}
+
+/* View buttons (Month, Week, Day, Agenda) */
+.rbc-toolbar .rbc-btn-group:last-child {
+  display: flex;
+  gap: 4px;
+}
+
+/* Button styles */
+.rbc-toolbar button {
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  min-height: 38px !important;
+  min-width: 80px !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease-in-out !important;
+  cursor: pointer !important;
+}
+
+/* Active view button */
+.rbc-toolbar button.rbc-active {
+  background-color: #1976d2 !important;
+  color: white !important;
+  font-weight: 600 !important;
+  box-shadow: 0 0 0 1px rgba(25, 118, 210, 0.5) !important;
+}
+
+/* Hover effect */
+.rbc-toolbar button:not(.rbc-active):hover {
+  background-color: #f5f5f5 !important;
+  transform: translateY(-1px);
+}
+
+/* Today button */
+.rbc-toolbar button.rbc-today-btn {
+  min-width: 100px !important;
+  font-weight: 600 !important;
+}
+
+.rbc-month-view,
+.rbc-time-view {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.rbc-time-content {
+  min-height: 0;
+  width: 100%;
+}
+
+/* Toolbar - Consolidated styles */
+.rbc-toolbar {
+  padding: 15px 16px !important;
+  background: #f8f9fa !important;
+  border-bottom: 1px solid #e9ecef !important;
+  z-index: 10;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  margin: 0 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .calendar-wrapper {
+    height: 700px;
+  }
+}
+
+@media (max-width: 992px) {
+  .calendar-wrapper {
+    height: 650px;
+  }
+}
+
+@media (max-width: 768px) {
+  .calendar-container {
+    padding: 10px 5px;
+  }
+  
+  .calendar-wrapper {
+    height: 500px;
+  }
+  
+  .rbc-calendar {
+    font-size: 12px;
+  }
+  
+  .rbc-event {
+    padding: 1px 3px;
+    font-size: 10px;
+  }
+  
+  .rbc-toolbar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+  
+  .rbc-toolbar .rbc-toolbar-label {
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-wrapper {
+    height: 400px;
+  }
+  
+  .rbc-toolbar {
+    font-size: 12px;
+  }
+  
+  .rbc-btn-group button {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    min-height: 36px !important;
+    min-width: 60px !important;
+  }
+}
+
+/* Responsive fix */
+@media (max-width: 768px) {
+  .booking-form-container {
+    margin-top: 100px;  /* Slightly more space under mobile navbar */
+    padding: 16px;
+  }
+}
+
+  .rbc-toolbar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+
+  .rbc-toolbar-label {
+    font-size: 1.2rem !important;
+    text-align: center !important;
+    margin: 8px 0 !important;
+  }
+
+  .rbc-btn-group {
+    display: flex !important;
+    gap: 8px !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+
+  .rbc-btn-group button {
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+    min-height: 36px !important;
+    min-width: 70px !important;
+  }
+
+
+/* BookingForm.css */
+/* BookingForm.css */
+.booking-form-container {
+  margin-top: 80px; /* Push the form down from the top */
+  padding: 20px;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto; /* Allows vertical scrolling */
+}
+

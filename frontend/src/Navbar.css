@@ -1,0 +1,171 @@
+/* Navbar.css */
+
+/* Main navbar styling */
+.custom-navbar {
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #343a40 !important;
+  padding: calc(0.5rem + env(safe-area-inset-top, 0)) 1rem 0.5rem 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Navbar container */
+.navbar-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Navbar brand (Admin Panel) */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #fff !important;
+  margin-right: 2rem;
+  padding: 0.5rem 0;
+}
+
+/* Navigation links container */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+/* Navigation items on the left */
+.navbar-nav.left {
+  flex-grow: 1;
+}
+
+/* Individual nav items */
+.nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* Active link */
+.nav-link.active {
+  color: #fff !important;
+  font-weight: 600;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Logout button */
+.navbar-nav:last-child {
+  margin-left: auto;
+}
+
+
+.logout-button {
+  color: #ff4d4f !important;
+  font-weight: 600;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 77, 79, 0.2);
+  border-radius: 4px;
+}
+
+
+@media (max-width: 767.98px) {
+  .custom-navbar {
+    padding-top: 2rem !important; /* Pushes content lower */
+  }
+
+  .navbar-brand {
+    margin-top: 0.5rem;
+  }
+
+  .nav-link {
+    margin-top: 0.3rem;
+  }
+}
+
+
+
+
+
+
+/* Mobile menu button */
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Mobile menu */
+.navbar-collapse {
+  flex-grow: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: #343a40;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+  }
+  
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .nav-link {
+    width: 100%;
+    padding: 0.75rem 0.5rem !important;
+    margin: 0.25rem 0;
+  }
+  
+  /* Center align brand on mobile */
+  .navbar-brand {
+    margin: 0 auto !important;
+    text-align: center;
+  }
+  
+  /* Stack navigation items on mobile */
+  .navbar-nav.left,
+  .navbar-nav.right {
+    width: 100%;
+  }
+  
+  .navbar-nav.right {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Ensure content doesn't hide behind fixed navbar */
+body {
+  padding-top: 56px;
+}
+
+@media (max-width: 991.98px) {
+  body {
+    padding-top: 60px;
+  }
+}
