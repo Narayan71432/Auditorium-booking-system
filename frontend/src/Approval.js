@@ -321,6 +321,7 @@ const Approval = () => {
             field: 'topic', 
             headerName: 'Event Topic', 
             width: 200,
+            flex: 0.5,
             renderCell: (params) => (
                 <Tooltip title={params.value || 'N/A'} placement="top">
                     <Typography 
@@ -339,7 +340,7 @@ const Approval = () => {
         { 
             field: 'username', 
             headerName: 'Created By', 
-            width: 200,
+            width: 150,
             renderCell: (params) => (
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <PersonIcon fontSize="small" color="action" />
@@ -352,7 +353,7 @@ const Approval = () => {
         { 
             field: 'eventDate', 
             headerName: 'Event Date', 
-            width: 200,
+            width: 150,
             renderCell: (params) => {
                 // If we have a computed eventDate field, use it
                 if (params.row.eventDate) {
@@ -386,7 +387,7 @@ const Approval = () => {
         { 
             field: 'eventTime', 
             headerName: 'Event Time', 
-            width: 200,
+            width: 180,
             renderCell: (params) => {
                 // If we have a computed eventTime field, use it
                 if (params.row.eventTime) {
@@ -418,7 +419,7 @@ const Approval = () => {
         { 
             field: 'coordinatorName', 
             headerName: 'Event Coordinator', 
-            width: 200,
+            width: 150,
             renderCell: (params) => (
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <PersonIcon fontSize="small" color="action" />
@@ -431,7 +432,7 @@ const Approval = () => {
         { 
             field: 'speakerName', 
             headerName: 'Speaker', 
-            width: 200,
+            width: 150,
             renderCell: (params) => (
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <PersonIcon fontSize="small" color="action" />
@@ -444,7 +445,7 @@ const Approval = () => {
         { 
             field: 'department', 
             headerName: 'Department', 
-            width: 250,
+            width: 120,
             renderCell: (params) => (
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <BusinessIcon fontSize="small" color="action" />
@@ -457,7 +458,7 @@ const Approval = () => {
         { 
             field: 'status', 
             headerName: 'Status', 
-            width: 200,
+            width: 100,
             renderCell: (params) => (
                 <Chip 
                     label={params.value || 'Pending'} 
@@ -473,7 +474,7 @@ const Approval = () => {
         {
             field: 'actions',
             headerName: 'Actions',
-            width: 200,
+            width: 150,
             renderCell: (params) => (
                 <Box sx={{ display: 'flex', gap: 1 }}>
                     <Button

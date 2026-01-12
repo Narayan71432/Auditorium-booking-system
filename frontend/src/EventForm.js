@@ -5,7 +5,7 @@ import { Form, Button, Container, Row, Col, Alert, ListGroup } from 'react-boots
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { setHours, setMinutes } from 'date-fns';
-import './BookingForm.css';
+import './BookingForm.modern.css';
 
 function EventForm() {
   const navigate = useNavigate();
@@ -428,11 +428,9 @@ function EventForm() {
                 <option value="">Select Department</option>
                 <option value="Computer Science">Computer Science</option>
                 <option value="Electronics">Electronics</option>
-                <option value="Cyber Security">Cyber Security</option>
+                <option value="Mechanical">Mechanical</option>
                 <option value="Aerospace">Aerospace</option>
                 <option value="Biomedical">Biomedical</option>
-                <option value="Data Science">Data Science</option>
-                <option value="IoT">IoT</option>
               </Form.Select>
             </Form.Group>
           </Col>
@@ -526,12 +524,10 @@ function EventForm() {
                 onChange={handleInputChange}
               >
                 <option value="">Select Hall</option>
-                <option value="ACS Auditorium">ACS Auditorium</option>
-                <option value="1st floor seminar hall">1st floor seminar hall</option>
-                <option value="2nd floor seminar hall">2nd floor seminar hall</option>
-                <option value="3rd floor seminar hall">3rd floor seminar hall</option>
-                <option value="4th floor seminar hall">4th floor seminar hall</option>
-                <option value="5th floor seminar hall">5th floor seminar hall</option>
+                <option value="Main Hall">Main Hall</option>
+                <option value="Conference Room">Conference Room</option>
+                <option value="Auditorium">Auditorium</option>
+                <option value="Seminar Hall">Seminar Hall</option>
               </Form.Select>
             </Form.Group>
           </Col>

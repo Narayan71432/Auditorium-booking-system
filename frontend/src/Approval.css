@@ -1,286 +1,107 @@
-/* Approval.css */
-
-/* Main container */
 .approval-container {
-  padding: 2rem 1.5rem;
-  margin: 0;
   width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Page header */
-.approval-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 0 0.5rem;
+.approval-container h3, .approval-container h4 {
+  color: #007bff;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.approval-header h1 {
-  color: #2c3e50;
-  margin: 0;
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
-/* Search and filter bar */
-.approval-filters {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.search-box {
-  flex: 1;
-  min-width: 250px;
-  position: relative;
-}
-
-.search-box input {
-  width: 100%;
-  padding: 0.5rem 1rem 0.5rem 2.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 0.95rem;
-}
-
-.search-icon {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #6c757d;
-}
-
-.filter-select {
-  min-width: 180px;
-  padding: 0.5rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: white;
-  color: #495057;
-  font-size: 0.95rem;
-}
-
-/* Table container */
-.approval-table-container {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  overflow-x: auto;
-  margin: 0;
-  width: 100%;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Table styles */
-.approval-table {
+.requests-table, .history-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 1000px; /* Ensure table doesn't shrink below this width */
+  margin-bottom: 20px;
 }
 
-/* Table header and cells */
-.approval-table th,
-.approval-table td {
-  padding: 1rem;
+.requests-table th, .history-table th,
+.requests-table td, .history-table td {
+  border: 1px solid #dee2e6;
+  padding: 10px;
   text-align: left;
-  border-bottom: 1px solid #e9ecef;
-  vertical-align: middle;
 }
 
-/* Column specific widths */
-.approval-table th:nth-child(1),
-.approval-table td:nth-child(1) {
-  width: 8%;
-  min-width: 80px;
-  padding-left: 1.5rem;
+.requests-table th, .history-table th {
+  background-color: #007bff;
+  color: white;
 }
 
-.approval-table th:nth-child(2),
-.approval-table td:nth-child(2) {
-  width: 15%;
-  min-width: 120px;
-}
-
-.approval-table th:nth-child(3),
-.approval-table td:nth-child(3) {
-  width: 25%;
-  min-width: 200px;
-}
-
-.approval-table th:nth-child(4),
-.approval-table td:nth-child(4) {
-  width: 20%;
-  min-width: 150px;
-}
-
-.approval-table th:nth-child(5),
-.approval-table td:nth-child(5) {
-  width: 12%;
-  min-width: 120px;
-}
-
-.approval-table th:nth-child(6),
-.approval-table td:nth-child(6) {
-  width: 20%;
-  min-width: 180px;
-  padding-right: 1.5rem;
-}
-
-/* Table header styles */
-.approval-table th {
-  background-color: #f8f9fa;
-  color: #495057;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-  position: sticky;
-  top: 0;
-}
-
-/* Status badges */
-.status-badge {
-  display: inline-block;
-  padding: 0.4em 0.8em;
-  font-size: 0.8em;
-  font-weight: 600;
-  line-height: 1.2;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
+.requests-table button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
   border-radius: 4px;
-}
-
-.status-pending {
-  color: #856404;
-  background-color: #fff3cd;
-}
-
-.status-approved {
-  color: #155724;
-  background-color: #d4edda;
-}
-
-.status-rejected {
-  color: #721c24;
-  background-color: #f8d7da;
-}
-
-/* Action buttons */
-.action-buttons {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: nowrap;
-}
-
-.btn {
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
-  border: 1px solid transparent;
-  white-space: nowrap;
+  transition: background-color 0.3s ease;
 }
 
-.btn-approve {
+.requests-table button:first-child {
   background-color: #28a745;
   color: white;
 }
 
-.btn-approve:hover {
-  background-color: #218838;
-}
-
-.btn-reject {
+.requests-table button:last-child {
   background-color: #dc3545;
   color: white;
 }
 
-.btn-reject:hover {
-  background-color: #c82333;
+.requests-table button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
 }
 
-/* Pagination */
-.pagination {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
+.requests-table button:hover:not(:disabled) {
+  opacity: 0.9;
 }
 
-.page-item {
-  list-style: none;
-}
-
-.page-link {
-  display: block;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #dee2e6;
-  color: #007bff;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-}
-
-.page-link:hover {
-  background-color: #e9ecef;
-  border-color: #dee2e6;
-}
-
-.page-item.active .page-link {
-  background-color: #007bff;
-  border-color: #007bff;
-  color: white;
-}
-
-/* Text overflow handling */
-.text-ellipsis {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+/* Ensure MUI DataGrid is responsive */
+.MuiDataGrid-root {
+  width: 100%;
   max-width: 100%;
-  display: inline-block;
 }
 
-/* Hover effect for rows */
-.approval-table tbody tr:hover {
-  background-color: #f8f9fa;
+/* Custom scrollbar for DataGrid */
+.MuiDataGrid-virtualScroller::-webkit-scrollbar {
+  width: 8px;
+}
+
+.MuiDataGrid-virtualScroller::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.MuiDataGrid-virtualScroller::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.MuiDataGrid-virtualScroller::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
   .approval-container {
-    padding: 1.5rem 1rem;
+    padding: 10px;
   }
-  
-  .approval-table th,
-  .approval-table td {
-    padding: 0.75rem 0.5rem;
+
+  .requests-table, .history-table {
+    font-size: 0.9rem;
   }
-  
-  .btn {
-    padding: 0.4rem 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .requests-table, .history-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .MuiDataGrid-root {
     font-size: 0.8rem;
-  }
-}
-
-/* Ensure content doesn't hide behind fixed navbar */
-body {
-  padding-top: 56px;
-}
-
-@media (max-width: 991.98px) {
-  body {
-    padding-top: 60px;
   }
 }

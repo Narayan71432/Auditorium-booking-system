@@ -10,6 +10,7 @@ import BookingCalendar from './BookingCalendar';
 import EventForm from './EventForm';
 import Approval from './Approval';
 import ZoomControls from './ZoomControls';
+import NotFound from './NotFound';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -43,7 +44,31 @@ function App() {
 
   // If still loading, show nothing to prevent flicker
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+      }}>
+        <div style={{
+          textAlign: 'center',
+          color: 'white'
+        }}>
+          <div style={{
+            width: '60px',
+            height: '60px',
+            border: '5px solid rgba(255,255,255,0.3)',
+            borderTop: '5px solid white',
+            borderRadius: '50%',
+            animation: 'spin 1s linear infinite',
+            margin: '0 auto 1rem'
+          }}></div>
+          <h3 style={{ fontSize: '1.5rem', fontWeight: '600' }}>Loading...</h3>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -112,6 +137,10 @@ function App() {
           <Route 
             path="/" 
             element={<Navigate to="/Login" />} 
+          />
+          <Route 
+            path="*" 
+            element={<NotFound />} 
           />
         </Routes>
       </div>

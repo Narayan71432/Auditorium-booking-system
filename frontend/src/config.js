@@ -8,7 +8,7 @@ let API_BASE_URL = '';
 
 // You should replace this with your actual development machine's IP on the network
 // This IP should be accessible from your mobile device when on the same network
-const DEV_MACHINE_IP = '192.168.210.158'; // User's actual IP address
+const DEV_MACHINE_IP = '192.168.37.158'; // User's actual IP address
 
 if (Capacitor.isNativePlatform()) {
   if (platform === 'android') {

@@ -208,25 +208,4 @@
         height: auto;
     }
 }
-@media screen and (min-width: 768px) {
-    .calendar-container-outer {
-      flex-direction: row;
-      height: calc(100vh - 120px);
-    }
-  
-    .information-section {
-      flex: 0 0 75%;
-      max-width: 75%;
-      max-height: none;
-    }
-  
-    .calendar-section {
-      flex: 0 0 25%;
-      max-width: 25%;
-      padding-left: 15px;
-      border-left: 1px solid #ccc;
-      border-top: none;
-      height: auto;
-    }
-  }
-  
+

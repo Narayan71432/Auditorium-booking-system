@@ -5,7 +5,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Card, Badge, Tooltip } from '@mui/material';
 import ArrowDownward from '@mui/icons-material/ArrowDownward';
 import { getEvents } from './utils/apiConfig';
-import './CalendarComponent.css';
+import './CalendarComponent.modern.css';
 
 const CalendarComponent = ({ onLogout }) => {
     const [events, setEvents] = useState([]);
@@ -149,94 +149,95 @@ const CalendarComponent = ({ onLogout }) => {
         };
     });
 
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
+    if (isLoading) {
+        return (
+            <div className="calendar-page">
+                <div className="loading-container">
+                    <div className="loading-spinner"></div>
+                    <p className="loading-text">Loading events...</p>
+                </div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="calendar-page">
+                <div className="error-container">
+                    <h3>⚠️ Error Loading Events</h3>
+                    <p>{error}</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
-        <div className="calendar-container-outer">
-            {/* Information Section */}
-            <div className="information-section">
-                <h2>Booking Information</h2>
-                <p>Welcome, {userDetails.username} ({userDetails.email})</p>
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Search by coordinator, speaker, or topic"
-                        value={searchTerm}
-                        onChange={handleSearchChange}
-                        className="search-input"
-                    />
+        <div className="calendar-page">
+            <div className="calendar-container-outer">
+                {/* Header Section */}
+                <div className="calendar-header">
+                    <h1>📅 Booking Dashboard</h1>
+                    <p>Welcome, {userDetails.username} • {userDetails.email}</p>
                 </div>
-                <Card style={{ height: '100%', overflow: 'auto', width: '100%' }}>
-                    <DataGrid
-                        rows={rows}
-                        columns={columns}
-                        pageSize={10}
-                        rowsPerPageOptions={[10]}
-                        disableSelectionOnClick
-                    />
-                </Card>
-            </div>
 
-            {/* Calendar Section */}
-            <div className="calendar-section">
-                <button 
-                    onClick={toggleCalendar} 
-                    className="toggle-calendar-btn"
-                >
-                    {showCalendar ? 'Hide Calendar' : 'Show Calendar'}
-                    <ArrowDownward style={{ 
-                        marginLeft: '5px', 
-                        transition: 'transform 0.3s ease', 
-                        transform: showCalendar ? 'rotate(180deg)' : 'rotate(0deg)',
-                        fontSize: '24px'
-                    }} />
-                </button>
-                {showCalendar && (
-                    <>
-                    <div 
-                        className="calendar-wrapper" 
-                        style={{ overflow: 'auto' }}
-                        ref={calendarRef}
+                {/* Search and Filters Section */}
+                <div className="search-filter-section">
+                    <div className="search-input-wrapper">
+                        <span className="search-icon">🔍</span>
+                        <input
+                            type="text"
+                            placeholder="Search by coordinator, speaker, or topic..."
+                            value={searchTerm}
+                            onChange={handleSearchChange}
+                            className="search-input"
+                        />
+                    </div>
+                    <div className="filters-grid">
+                        <div className="filter-group">
+                            <label>Status Filter</label>
+                            <select value={bookingStatus} onChange={(e) => handleStatusChange(e.target.value)}>
+                                <option value="All">All Status</option>
+                                <option value="Approved">✅ Approved</option>
+                                <option value="Pending">⏳ Pending</option>
+                                <option value="Rejected">❌ Rejected</option>
+                            </select>
+                        </div>
+                        <div className="filter-group">
+                            <label>Department Filter</label>
+                            <select value={bookingDepartment} onChange={(e) => handleDepartmentChange(e.target.value)}>
+                                <option value="All">All Departments</option>
+                                <option value="Department of ComputerScience">Computer Science</option>
+                                <option value="Department of Electronics">Electronics</option>
+                                <option value="Department of Mechanical">Mechanical</option>
+                                <option value="Department of Aerospace">Aerospace</option>
+                                <option value="Department of Biomedical">Biomedical</option>
+                                <option value="Department of Aeronautical">Aeronautical</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Calendar Section */}
+                <div className="calendar-section">
+                    <button 
+                        onClick={toggleCalendar} 
+                        className="toggle-calendar-btn"
                     >
-                        <div>
+                        {showCalendar ? '📅 Hide Calendar' : '📅 Show Calendar'}
+                        <ArrowDownward style={{ 
+                            transition: 'transform 0.3s ease', 
+                            transform: showCalendar ? 'rotate(180deg)' : 'rotate(0deg)',
+                        }} />
+                    </button>
+                    {showCalendar && (
+                        <div className="calendar-wrapper" ref={calendarRef}>
                             <Calendar
                                 onChange={handleDateChange}
                                 value={selectedDate}
-                                style={{ width: '100%' }}
                                 tileContent={({ date, view }) => {
-                                // Only add content to month view
-                                if (view !== 'month') return null;
-                                
-                                // Find events for this date
-                                const dateEvents = events.filter(event => {
-                                    const eventDate = new Date(event.startDate);
-                                    return date.getDate() === eventDate.getDate() &&
-                                           date.getMonth() === eventDate.getMonth() &&
-                                           date.getFullYear() === eventDate.getFullYear() &&
-                                           event.status === 'Approved';
-                                });
-                                
-                                // If there are approved events, show a badge with count
-                                if (dateEvents.length > 0) {
-                                    return (
-                                        <Tooltip title={dateEvents.map(event => 
-                                            `${event.topic} (${event.hall}) - ${new Date(event.startDate).toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'})}`
-                                        ).join('\n')}>
-                                            <Badge 
-                                                badgeContent={dateEvents.length} 
-                                                color="primary"
-                                                style={{ position: 'absolute', top: '4px', right: '4px' }}
-                                            />
-                                        </Tooltip>
-                                    );
-                                }
-                                return null;
-                            }}
-                            tileClassName={({ date, view }) => {
-                                // Add class to dates with approved events
-                                if (view === 'month') {
-                                    const dateHasEvents = events.some(event => {
+                                    if (view !== 'month') return null;
+                                    
+                                    const dateEvents = events.filter(event => {
                                         const eventDate = new Date(event.startDate);
                                         return date.getDate() === eventDate.getDate() &&
                                                date.getMonth() === eventDate.getMonth() &&
@@ -244,45 +245,55 @@ const CalendarComponent = ({ onLogout }) => {
                                                event.status === 'Approved';
                                     });
                                     
-                                    return dateHasEvents ? 'has-events' : null;
-                                }
-                            }}
-                        />
+                                    if (dateEvents.length > 0) {
+                                        return (
+                                            <Tooltip title={dateEvents.map(event => 
+                                                `${event.topic} (${event.hall}) - ${new Date(event.startDate).toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'})}`
+                                            ).join('\n')}>
+                                                <Badge 
+                                                    badgeContent={dateEvents.length} 
+                                                    color="primary"
+                                                    style={{ position: 'absolute', top: '4px', right: '4px' }}
+                                                />
+                                            </Tooltip>
+                                        );
+                                    }
+                                    return null;
+                                }}
+                                tileClassName={({ date, view }) => {
+                                    if (view === 'month') {
+                                        const dateHasEvents = events.some(event => {
+                                            const eventDate = new Date(event.startDate);
+                                            return date.getDate() === eventDate.getDate() &&
+                                                   date.getMonth() === eventDate.getMonth() &&
+                                                   date.getFullYear() === eventDate.getFullYear() &&
+                                                   event.status === 'Approved';
+                                        });
+                                        
+                                        return dateHasEvents ? 'has-events' : null;
+                                    }
+                                }}
+                            />
                         </div>
-                    </div>
-                    </>
-                )}
-
-                {/* Filters Section */}
-                <div className="filter-section">
-                    {/* Booking Status Filter Bar */}
-                    <div>
-                        <h3>Filter by Status:</h3>
-                        <select value={bookingStatus} onChange={(e) => handleStatusChange(e.target.value)}>
-                            <option value="All">All</option>
-                            <option value="Approved">Approved</option>
-                            <option value="Rejected">Rejected</option>
-                            <option value="Pending">Pending</option>
-                        </select>
-                    </div>
-
-                    {/* Booking Department Filter Bar */}
-                    <div>
-                        <h3>Filter by Department:</h3>
-                        <select value={bookingDepartment} onChange={(e) => handleDepartmentChange(e.target.value)}>
-                            <option value="All">All</option>
-                            <option value="Department of ComputerScience">ComputerScience</option>
-                            <option value="Department of Electronics">Electronics</option>
-                            <option value="Department of Mechanical">Mechanical</option>
-                            <option value="Department of Aerospace">Aerospace</option>
-                            <option value="Department of Biomedical">Biomedical</option>
-                            <option value="Department of Aeronautical">Aeronautical Engineering</option>
-                        </select>
-                    </div>
+                    )}
                 </div>
-                <button variant="danger" onClick={onLogout} className="mt-3">
-                    Logout
-                </button>
+
+                {/* Data Grid Section */}
+                <div className="data-grid-section">
+                    <div className="data-grid-header">
+                        <h2>📋 Event Bookings</h2>
+                        <span className="event-count">{filteredEvents.length} events</span>
+                    </div>
+                    <Card style={{ height: 600, width: '100%' }}>
+                        <DataGrid
+                            rows={rows}
+                            columns={columns}
+                            pageSize={10}
+                            rowsPerPageOptions={[10, 25, 50]}
+                            disableSelectionOnClick
+                        />
+                    </Card>
+                </div>
             </div>
         </div>
     );

@@ -1,65 +1,44 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Nav, Navbar as BootstrapNavbar } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 const UserNavbar = ({ isLoggedIn, onLogout }) => {
   const navigate = useNavigate();
-  const [expanded, setExpanded] = useState(false); // Track navbar state
 
   const handleLogout = () => {
     onLogout();
     navigate('/Login');
-    setExpanded(false); // Collapse navbar
-  };
-
-  const handleNavClick = () => {
-    setExpanded(false); // Collapse navbar when link is clicked
   };
 
   return (
-    <BootstrapNavbar
-      bg="dark"
-      variant="dark"
-      expand="lg"
-      fixed="top"
-      className="custom-navbar"
-      expanded={expanded}
-      onToggle={() => setExpanded((prev) => !prev)}
-    >
-      <Container fluid>
-        <BootstrapNavbar.Brand as={Link} to="/" className="me-4" onClick={handleNavClick}>
-          Home
+    <BootstrapNavbar expand="lg" variant="dark" fixed="top" className="custom-navbar">
+      <Container>
+        <BootstrapNavbar.Brand as={Link} to="/CalendarComponent">
+          Auditorium Hub
         </BootstrapNavbar.Brand>
-
-        <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
-
-        <BootstrapNavbar.Collapse id="basic-navbar-nav">
-          {/* Left side: Navigation links */}
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/BookingCalendar" onClick={handleNavClick}>
-              Calendar
+        <BootstrapNavbar.Toggle aria-controls="navbar-nav" />
+        <BootstrapNavbar.Collapse id="navbar-nav">
+          <Nav className="ms-auto">
+            <Nav.Link as={Link} to="/BookingCalendar">
+              📅 Calendar
             </Nav.Link>
-            <Nav.Link as={Link} to="/EventForm" onClick={handleNavClick}>
-              Event Details
+            <Nav.Link as={Link} to="/EventForm">
+              ✨ Book Event
             </Nav.Link>
-            <Nav.Link as={Link} to="/CalendarComponent" onClick={handleNavClick}>
-              Calendar Component
+            <Nav.Link as={Link} to="/CalendarComponent">
+              📋 View Bookings
             </Nav.Link>
-          </Nav>
-
-          {/* Right side: Logout button */}
-          {isLoggedIn && (
-            <Nav className="ms-auto">
-              <Nav.Link onClick={handleLogout} className="nav-link logout-button">
-                Logout
+            {isLoggedIn && (
+              <Nav.Link onClick={handleLogout} style={{ cursor: 'pointer' }}>
+                🚪 Logout
               </Nav.Link>
-            </Nav>
-          )}
+            )}
+          </Nav>
         </BootstrapNavbar.Collapse>
       </Container>
     </BootstrapNavbar>
   );
-};
+}
 
 export default UserNavbar;
