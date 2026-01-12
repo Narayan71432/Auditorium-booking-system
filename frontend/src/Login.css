@@ -10,7 +10,6 @@
     overflow: hidden;
 }
 
-/* Animated Background Elements */
 .login-container::before {
     content: '';
     position: absolute;
@@ -169,7 +168,7 @@
     width: 100%;
     padding: 1rem 1.25rem;
     border: 2px solid #e5e7eb;
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 1rem;
     transition: all 0.3s ease;
     background: white;
@@ -239,7 +238,6 @@
     animation: slideInFromLeft 0.3s ease;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 640px) {
     .login-card {
         padding: 2rem 1.5rem;
@@ -281,26 +279,4 @@
     .submit-button {
         padding: 0.875rem;
     }
-}
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745; /* Green color for submit button */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: background-color 0.3s;
-}
-
-button[type="submit"]:hover {
-    background-color: #218838; /* Darker green on hover */
 }
